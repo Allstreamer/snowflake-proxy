@@ -3,7 +3,9 @@ name = "snowflake-proxy"
 description = "A Libaray for running a Tor-Snowflake Proxy"
 authors = ["Allstreamer"]
 license = "MIT"
-version = "0.1.0"
+readme = "README.md"
+repository = "https://github.com/Allstreamer/snowflake-proxy"
+version = "0.0.1"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
