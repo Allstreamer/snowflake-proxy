@@ -5,6 +5,7 @@ use std::time::Duration;
 use webrtc::api::APIBuilder;
 use webrtc::peer_connection::configuration::RTCConfiguration;
 use webrtc::ice_transport::ice_server::RTCIceServer;
+use webrtc::api::interceptor_registry::register_default_interceptors;
 
 const SESSION_ID_LENGTH: usize = 16;
 
@@ -55,6 +56,11 @@ async fn main() -> Result<()> {
 
         println!("{:?}", serde_json::from_str::<serde_json::Value>(res.get("Offer").unwrap().get("sdp").unwrap().as_str().unwrap()));
 
+        let mut registry = Registry::new();
+        let mut m = MediaEngine::default();
+        m.register_default_codecs()?;
+    
+        registry = register_default_interceptors(registry, &mut m)?;
         let api = APIBuilder::new().build();
     
         let config = RTCConfiguration {
