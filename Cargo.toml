@@ -8,14 +8,18 @@ repository = "https://github.com/Allstreamer/snowflake-proxy"
 version = "0.0.1"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[profile.dev.package."*"]
+opt-level = 3
 
 [dependencies]
 tokio = { version = "1", features = ["full"] }
 reqwest = { version = "0.11", features = ["json"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-rand = "0.8.4"
+rand = "0.8"
+webrtc = "0.7"
 anyhow = "1.0"
-base64 = "0.13.0"
-webrtc = "0.4.0"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+base64 = "0.21"
+url = "2.3"
